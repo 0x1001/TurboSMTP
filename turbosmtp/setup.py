@@ -6,8 +6,7 @@ setup(
     author='Damian Nowok',
     author_email='damian.nowok@gmail.com',
     packages=['turbosmtp'],
-    url='http://pypi.python.org/pypi/turbosmtp/',
+    url='https://github.com/0x1001/TurboSMTP',
     license='LICENSE.txt',
     description='TurboSMTP client',
-    long_description=open('README.txt').read(),
 )
