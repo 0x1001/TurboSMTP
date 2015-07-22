@@ -11,7 +11,7 @@ class Test_mail(unittest.TestCase):
 
         self._to = config["to"]
         self._from = config["from"]
-        self._server = turbosmtp.TurboSmtp(config["user"], config["password"])
+        self._server = turbosmtp.TurboSMTP(config["user"], config["password"])
 
     @unittest.skip("This sends email!")
     def test_mail(self):
@@ -69,7 +69,7 @@ class Test_mail(unittest.TestCase):
 
         self._server._URL = "https://not.existing.url.bla.bla.bla.com"
 
-        with self.assertRaises(turbosmtp.TurboSmtpException):
+        with self.assertRaises(turbosmtp.TurboSMTPException):
             self._server.send(message)
 
     def test_mail_exception_no_to_from(self):
@@ -79,7 +79,7 @@ class Test_mail(unittest.TestCase):
         message = message.Message()
         message["Subject"] = "This is a test!"
 
-        with self.assertRaises(turbosmtp.TurboSmtpException):
+        with self.assertRaises(turbosmtp.TurboSMTPException):
             self._server.send(message)
 
 if __name__ == "__main__":

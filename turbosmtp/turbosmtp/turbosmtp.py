@@ -1,8 +1,8 @@
-class TurboSmtpException(Exception):
+class TurboSMTPException(Exception):
     pass
 
 
-class TurboSmtp(object):
+class TurboSMTP(object):
     _URL = "https://api.turbo-smtp.com/api/mail/send"
 
     def __init__(self, user, password):
@@ -16,7 +16,7 @@ class TurboSmtp(object):
         try:
             response = urllib2.urlopen(req)
         except urllib2.URLError as error:
-            raise TurboSmtpException(error)
+            raise TurboSMTPException(error)
 
         self._analyse_response(response)
 
@@ -33,7 +33,10 @@ class TurboSmtp(object):
         turbo_data["subject"] = message["Subject"]
         turbo_data["mime_raw"] = message.as_string()
 
-        return urllib.urlencode(turbo_data)
+        try:
+            return urllib.urlencode(turbo_data)
+        except UnicodeEncodeError as error:
+            raise TurboSMTPException(error)
 
     def _analyse_response(self, response):
         import json
@@ -42,4 +45,4 @@ class TurboSmtp(object):
         msg = json.loads(resp_contents)
 
         if msg['message'] != "OK":
-            raise TurboSmtpException(resp_contents)
+            raise TurboSMTPException(resp_contents)
