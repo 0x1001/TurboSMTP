@@ -5,7 +5,7 @@ TurboSMTP (http://serversmtp.com) is online service for sending emails. TurboSMT
 To use this module you have to have account at http://serversmtp.com . Basic account is free of charge.
 
 ## Version
-1.0.0
+1.0.1
 
 ## Installation
 ```sh

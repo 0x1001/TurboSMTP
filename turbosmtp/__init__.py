@@ -1,4 +1,4 @@
 from turbosmtp import TurboSMTP
-from turbosmpt import TurboSMTPException
+from turbosmtp import TurboSMTPException
 
 __all__ = [TurboSMTP, TurboSMTPException]
